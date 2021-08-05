@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web components library using react-webcomponentify</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+  <body>
+    <section class="header-section">
+      <main>
+        <div class="ex-container">
+          <div class="ex-comp-container" id="counter-container">
+            <h4>my-counter:</h4>
+            <my-counter id="my-custom-counter" text="Stop"></my-counter>
+          </div>
+          <button onclick="removeNode()">Remove Node</button>
+          <p id="tips" class="warning hide">
+            The Node which component mounted is removed, But the event handler registered by component is stilll running. <br/>
+            Open the console, you can see it.
+          </p>
+          <div class="ex-code-container">
+            <script type="text/javascript">
+              window.onload = function () {
+                var myCounter = document.getElementById("my-custom-counter");
+                myCounter.setProps({
+                  onClick: function () {
+                    console.log("stop interval");
+                  }
+                });
+              };
+
+              function removeNode() {
+                const container = document.getElementById('counter-container');
+                container.remove();
+                document.getElementById("tips").classList.remove('hide')
+              }
+            </script>
+          </div>
+        </div>
+      </main>
+      <script src="js/bundle.js"></script>
+  </body>
+
+</html>

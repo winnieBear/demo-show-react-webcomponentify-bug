@@ -1,0 +1,1 @@
+import {MyCounter} from './components/my-counter'
